@@ -43,3 +43,37 @@ std:cin >> favorite_number;
 ```
 
 最常用的預處理器指令是`#include`
+
+### The main() function
+
+C++程式一定要有main() function，當電腦執行C++程式時，系統會調用main() function，執行main() function裡面的程式，如果main() function的return為`0`，則系統會停止執行C++
+
+常見的C++程式有兩種版本：
+
+第一種版本在執行C++程式時，不需要帶任何參數
+
+```cpp
+int main() {
+  // code
+  
+  return 0;
+}
+```
+
+```zsh
+program.exe
+```
+
+第二種版本，在執行C++程式時，需要指定參數，`argc`是argument count，`argv`是argument vector
+
+```cpp
+int main(int argc, char *argv[]) {
+  // code
+  
+  return 0;
+}
+```
+
+```zsh
+program.exe argument1 argument2
+```
