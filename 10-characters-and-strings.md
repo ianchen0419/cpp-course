@@ -60,13 +60,13 @@ cout << name << endl; // 可能出現垃圾值
 會無法預期C++將什麼資料寫入了`name`這個C-Style string裡面去，因此正確的宣告空C-Style字串的寫法應為：
 
 ```cpp
-char name[5] = {};
+char name[5] {};
 ```
 
 而這種一開始宣告空C-Style字串，並且在日後補字串的狀況，不能直些使用習以為常的等號`=`再賦值
 
 ```cpp
-char name[5];
+char name[5] {};
 
 name = "Frank"; // 錯誤，因為"Frank"沒有終止字元，所以內存數量對不上
 ```
@@ -74,7 +74,7 @@ name = "Frank"; // 錯誤，因為"Frank"沒有終止字元，所以內存數量
 這種狀況，需要用`strcpy`函示處理
 
 ```cpp
-char name[5];
+char name[5] {};
 
 strcpy(name, "Frank"); // 成功
 ```
@@ -108,13 +108,83 @@ cout << strcmp(name, "Another") << endl; // 回傳值為7，7大於0，表示str
 
 包含將C-Style字符串（具有`\0`空白終止符）轉為其他類型的函示，例如integer、float、long等等
 
+## C-Style字串 練習範例
+
+本次練習需要引入3個函示庫
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <cctype>
+```
+
+```cpp
+char name[20] {};
+
+cout << "Your name: ";
+cin >> name;
+
+cout << "Your name is " << name << " and has " << strlen(name) << " characters." << endl;
+```
+
+`strlen()`會返回`size_t`，實際上是一個無符號整數，在32位元的電腦是`unsigned int`，在64位元的電腦是`unsigned long`
+
+輸入帶有空格的內容：
+在上面這個範例中，會發現如果輸入了`Harry Potter`，實際上`name`只會存下`Harry`，如果想要能夠輸入帶有空格的，需要使用`cin.getline()`
+
+```cpp
+char name[20] {};
+
+cout << "Your name: ";
+cin.getline(name, 20);
+
+cout << "Your name is " << name << " and has " << strlen(name) << " characters." << endl;
+```
+
+`cin.getline()`的第一個參數填要存的變數名稱，第二個參數填入最大限制的字元數，比如上面範例填了`20`，那麼一旦當使用者輸入後按下Enter，或是輸入了超過20個字，`cin`就會停止存了
+
+利用for迴圈將C-Style字串轉大寫
+
+```cpp
+char name[20] {};
+
+cout << "Your name: ";
+cin.getline(name, 20);
+
+for(size_t i {0}; i < strlen(name); i++) {
+    if(isalpha(name[i])) {
+        name[i] = toupper(name[i]);
+    }
+}
+
+cout << name << endl;
+```
 
 
+比較轉大寫的C-Style字串跟沒有轉大寫的C-Style字串：`strcmp()`可以比較兩個C-Style字串，判斷誰比較多，誰必較少，如果兩個字串完全一樣，則返回`0`。
+但是兩個字串，字母都一樣，一個都是大寫，另一個都是小寫的話，`strcmp()`會依照字典排序給積分
+
+```cpp
+char name[20] {};
+
+cout << "Your name: ";
+cin.getline(name, 20);
+
+// 暫存小寫字串
+char temp[20] {};
+strcpy(temp, name);
 
 
-
-
-
+// 轉大寫
+for(size_t i {0}; i < strlen(name); i++) {
+    if(isalpha(name[i])) {
+        name[i] = toupper(name[i]);
+    }
+}
+    
+cout << strcmp(temp, name) << endl; // 32
+cout << strcmp(name, temp) << endl; // -32
+```
 
 
 
