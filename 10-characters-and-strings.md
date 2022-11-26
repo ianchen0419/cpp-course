@@ -186,7 +186,29 @@ cout << strcmp(temp, name) << endl; // 32
 cout << strcmp(name, temp) << endl; // -32
 ```
 
+## C++ String
 
+- C++ String因為是標準函式庫，所以型別全名是`std::string`
+- 當使用C++ String時，需要引入`<string>`函示庫
+- 跟C-Style字串一樣是連續地存放在記憶體中
+- 與C-Style字串不同的是，C-Style字串是固定記憶體大小（像陣列一樣不能事後改長度），但是C++字串是動態記憶體大小
+- 可以與常用的操作符連用，例如`+`、`=`、`+=`
+- 可以轉換型別成C-Style字串
+
+宣告C++字串：
+在宣告字串前需要先設定這些：
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+```
+
+自動被初始化：
+```cpp
+string name {}; // 沒有垃圾值
+```
 
 
 
