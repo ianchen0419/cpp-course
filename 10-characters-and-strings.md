@@ -162,7 +162,7 @@ cout << name << endl;
 
 
 比較轉大寫的C-Style字串跟沒有轉大寫的C-Style字串：`strcmp()`可以比較兩個C-Style字串，判斷誰比較多，誰必較少，如果兩個字串完全一樣，則返回`0`。
-但是兩個字串，字母都一樣，一個都是大寫，另一個都是小寫的話，`strcmp()`會依照字典排序給積分
+但是兩個字串，字母都一樣，一個都是大寫，另一個都是小寫的話，`strcmp()`會依照ASKII排序給積分
 
 ```cpp
 char name[20] {};
@@ -195,7 +195,7 @@ cout << strcmp(name, temp) << endl; // -32
 - 可以與常用的操作符連用，例如`+`、`=`、`+=`
 - 可以轉換型別成C-Style字串
 
-宣告C++字串：
+## 宣告與初始化C++字串
 在宣告字串前需要先設定這些：
 
 ```cpp
@@ -205,11 +205,109 @@ cout << strcmp(name, temp) << endl; // -32
 using namespace std;
 ```
 
-自動被初始化：
+自動被初始化：與C-Style字串不同，C++字串會自動被初始化，會分配空的值進去，所以不用擔心垃圾值的問題
 ```cpp
 string name {}; // 沒有垃圾值
 ```
 
+宣告字串與複製字串（到不同記憶體）
+```cpp
+string name {"Frank"}; // Frank
+string copy {name}; // Frank
+```
+
+擷取
+```cpp
+string wholeName {"Frank"};
+
+string name {"Frank", 3}; // Fra
+string name2 {wholeName, 0, 2}; // Fr
+```
+
+重複
+```cpp
+string name(6, "X"); // XXXXXX
+```
+
+## C++字串賦值
+
+一開始宣告為空，之後再賦值
+
+```cpp
+string s1;
+s1 = "C++ Rocks!";
+```
+
+一開始宣告當下就賦值
+
+```cpp
+string s2 {"Hello"};
+```
+
+## C++字串的連結
+
+用等號`=`串連
+
+## C++字串的索引定位
+
+跟向量一樣，有2種方式可以做
+
+```cpp
+string name {"Frank"};
+
+cout << name[0] << endl; // F
+cout << name.at(0) << endl; // F
+```
+
+搭配Range-based for loop實作的小練習
+
+```cpp
+string name {"Frank"};
+    
+for(char letter: name) {
+    cout << letter << endl;
+}
+
+// F
+// r
+// a
+// n
+// k
+```
+
+## C++字串的比較
+
+直接使用操作符比較：`==`、`!=`、`>`、`>=`、`<`、`<=`
+
+除了可比較兩個C++字串，也能比較C++字串與C-Style字串
+
+## C++字串的`substr()`
+
+可以從字串中擷取想要的
+
+```cpp
+string s1 {"This is a test"};
+    
+cout << s1.substr(0, 4) << endl; // This
+cout << s1.substr(5, 2) << endl; // is
+cout << s1.substr(10, 4) << endl; // test
+```
+
+## C++字串的`find()`
+
+```cpp
+string s1 {"This is a test"};
+    
+// 查詢字串
+cout << s1.find("This") << endl; // 0
+cout << s1.find("test") << endl; // 10
+
+// 從第4個字元開始查
+cout << s1.find("is", 4) << endl; // 5
+
+// 如果查無此人，返回no position
+cout << s1.find("XX") << endl; // string::npos
+```
 
 
 
