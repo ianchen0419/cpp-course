@@ -16,6 +16,8 @@ std:cin >> favorite_number;
 
 `::`：scope resolution operator
 
+`cin`在必需接著`cout`之後使用，如果在一開始就使用了`cin`，雖然程式能夠成功執行，但是會當掉，建議先一開始用`cout`敘述輸入的題目，再接著用`cin`
+
 
 ## Preprocessor Directives 預處理器指令
 
