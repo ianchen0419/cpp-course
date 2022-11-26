@@ -309,5 +309,61 @@ cout << s1.find("is", 4) << endl; // 5
 cout << s1.find("XX") << endl; // string::npos
 ```
 
+## C++字串的`erase()`跟`clear()`
+
+```cpp
+string s1 {"This is a test"};
+    
+cout << s1.erase(0, 5) << endl; // is a test
+
+s1.clear(); // empty string
+```
+
+## C++字串的`length()`
+
+返回長度
+
+```cpp
+string s1 {"This is a test"};
+    
+cout << s1.length() << endl; // 14
+```
+
+## C++字串的input
+
+cin的input用法
+```cpp
+string name;
+    
+cout << "Please input your name: ";
+cin >> name;
+
+cout << name << endl;
+```
+
+直接用cin一樣會用如果輸入空白後面的文字就遺失的問題，為了避免，可以使用`getline()`提取輸入
+
+```cpp
+string name;
+    
+cout << "Please input your name: ";
+getline(cin, name);
+
+cout << name << endl;
+```
+
+`getline()`的第二種變體：終止字元，第三個變數是終止字元，如果用戶輸入到那個字元，則cin就會結束提取
+
+```
+string name;
+    
+cout << "Please input your name: ";
+getline(cin, name, 'x'); // 輸入「Harry Potterx」
+
+cout << name << endl; // Harry Potter
+```
+
+
+
 
 
