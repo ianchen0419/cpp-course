@@ -207,7 +207,7 @@ using namespace std;
 
 自動被初始化：與C-Style字串不同，C++字串會自動被初始化，會分配空的值進去，所以不用擔心垃圾值的問題
 ```cpp
-string name {}; // 沒有垃圾值
+string name; // 沒有垃圾值
 ```
 
 宣告字串與複製字串（到不同記憶體）
@@ -364,6 +364,33 @@ cout << name << endl; // Harry Potter
 ```
 
 
+## C++字串的範例
 
+本節範例需要引入`<iostrean>`與`<string>`與namespace
 
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+```
+
+查詢輸入的單字
+```cpp
+string wholeText =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. \nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. \nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+    
+string searchWord;
+
+cout << "Please input your search word: ";
+cin >> searchWord;
+
+size_t position = wholeText.find(searchWord);
+
+if(position == string::npos) {
+    cout << "Sorrt, we don't found " << searchWord << endl;
+} else {
+    cout << "Found" << searchWord << "at position of " << position << endl;
+}
+```
 
