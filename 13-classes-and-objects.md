@@ -1,4 +1,4 @@
-# Section 12: Classes and Objects
+# Section 13: Classes and Objects
 
 ## Object-Oriented Programming
 
