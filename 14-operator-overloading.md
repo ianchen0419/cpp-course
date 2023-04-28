@@ -1,6 +1,6 @@
 # Section 14: Operator Overloading
 
-## Opereator Overloading
+## Operator Overloading
 
 先來看看不使用運算子多載的用法
 
